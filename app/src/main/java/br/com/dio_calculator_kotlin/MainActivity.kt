@@ -17,6 +17,23 @@ class MainActivity : AppCompatActivity() {
 
         //eventos de clique
         numero_zero.setOnClickListener { AcrescentarUmaExpressao(string =  "0", limpar_dados = true)} //valores para os parâmetros
+        numero_um.setOnClickListener { AcrescentarUmaExpressao(string =  "1", limpar_dados = true)}
+        numero_dois.setOnClickListener { AcrescentarUmaExpressao(string =  "2", limpar_dados = true)}
+        numero_tres.setOnClickListener { AcrescentarUmaExpressao(string =  "3", limpar_dados = true)}
+        numero_quatro.setOnClickListener { AcrescentarUmaExpressao(string =  "4", limpar_dados = true)}
+        numero_cinco.setOnClickListener { AcrescentarUmaExpressao(string =  "5", limpar_dados = true)}
+        numero_seis.setOnClickListener { AcrescentarUmaExpressao(string =  "6", limpar_dados = true)}
+        numero_sete.setOnClickListener { AcrescentarUmaExpressao(string =  "7", limpar_dados = true)}
+        numero_oito.setOnClickListener { AcrescentarUmaExpressao(string =  "8", limpar_dados = true)}
+        numero_nove.setOnClickListener { AcrescentarUmaExpressao(string =  "9", limpar_dados = true)}
+
+        //operadores
+
+        soma.setOnClickListener {AcrescentarUmaExpressao(string = "+", limpar_dados = false)}
+        subtracao.setOnClickListener{AcrescentarUmaExpressao(string = "-", limpar_dados = false)}
+        multiplicacao.setOnClickListener{AcrescentarUmaExpressao(string = "*", limpar_dados = false)}
+        divisao.setOnClickListener{AcrescentarUmaExpressao(string = "/", limpar_dados = false)}
+
 
 
     }
