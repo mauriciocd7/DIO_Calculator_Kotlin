@@ -139,10 +139,11 @@
             android:id="@+id/numero_zero"
             style="@style/Numbers_Button"
             android:text="0"/>
-        <TextView
+        <ImageView
             android:id="@+id/backspace"
             style="@style/Numbers_Button"
-            android:text="backspace"/>
+            android:src="@drawable/backspace"
+            android:scaleType="center"/>
         <TextView
             android:id="@+id/igual"
             style="@style/Operators_Button"
