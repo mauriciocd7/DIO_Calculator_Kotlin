@@ -26,14 +26,41 @@ class MainActivity : AppCompatActivity() {
         numero_sete.setOnClickListener { AcrescentarUmaExpressao(string =  "7", limpar_dados = true)}
         numero_oito.setOnClickListener { AcrescentarUmaExpressao(string =  "8", limpar_dados = true)}
         numero_nove.setOnClickListener { AcrescentarUmaExpressao(string =  "9", limpar_dados = true)}
+        ponto.setOnClickListener{AcrescentarUmaExpressao(string = ".", limpar_dados = false)}
 
         //operadores
-
         soma.setOnClickListener {AcrescentarUmaExpressao(string = "+", limpar_dados = false)}
         subtracao.setOnClickListener{AcrescentarUmaExpressao(string = "-", limpar_dados = false)}
         multiplicacao.setOnClickListener{AcrescentarUmaExpressao(string = "*", limpar_dados = false)}
         divisao.setOnClickListener{AcrescentarUmaExpressao(string = "/", limpar_dados = false)}
 
+        //limpar
+        limpar.setOnClickListener {
+            expressao.text = ""
+            resultado.text = ""
+        }
+
+        //backspace
+        backspace.setOnClickListener {
+
+            val string = expressao.text.toString()
+
+            if (string.isNotBlank()){ //se string não estiver vazia.
+                expressao.text = string.substring(0, string.length-1) //tira um caracter
+            }
+
+            resultado.text = ""
+        }
+
+        igual.setOnClickListener {
+
+            try {
+                val expressao = ExpressionBuilder()
+
+            }catch (){
+
+            }
+        }
 
 
     }
