@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.dio_calculator_kotlin.R.*
 import kotlinx.android.synthetic.main.activity_main.*
+import net.objecthunter.exp4j.ExpressionBuilder
+import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         numero_sete.setOnClickListener { AcrescentarUmaExpressao(string =  "7", limpar_dados = true)}
         numero_oito.setOnClickListener { AcrescentarUmaExpressao(string =  "8", limpar_dados = true)}
         numero_nove.setOnClickListener { AcrescentarUmaExpressao(string =  "9", limpar_dados = true)}
-        ponto.setOnClickListener{AcrescentarUmaExpressao(string = ".", limpar_dados = false)}
+        ponto.setOnClickListener{AcrescentarUmaExpressao(string = ".", limpar_dados = true)}
 
         //operadores
         soma.setOnClickListener {AcrescentarUmaExpressao(string = "+", limpar_dados = false)}
@@ -37,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         //limpar
         limpar.setOnClickListener {
             expressao.text = ""
-            resultado.text = ""
+            txt_resultado.text = ""
         }
 
         //backspace
@@ -49,16 +51,27 @@ class MainActivity : AppCompatActivity() {
                 expressao.text = string.substring(0, string.length-1) //tira um caracter
             }
 
-            resultado.text = ""
+            txt_resultado.text = ""
         }
 
         igual.setOnClickListener {
 
             try {
-                val expressao = ExpressionBuilder()
 
-            }catch (){
+                val expressao = ExpressionBuilder(expressao.text.toString()).build()
 
+
+                val resultado = expressao.evaluate() //tratamento
+                val longResult = resultado.toLong()
+
+                if (resultado == longResult.toDouble()){
+                    txt_resultado.text = longResult.toString()
+                } else{
+                    txt_resultado.text = resultado.toString()
+                }
+
+            }catch (e: Exception){
+                //pode se por log
             }
         }
 
@@ -68,19 +81,19 @@ class MainActivity : AppCompatActivity() {
     fun AcrescentarUmaExpressao(string: String, limpar_dados: Boolean){
 
         //validações
-        if(resultado.text.isNotEmpty()){ //resultado não estiver vazio
+        if(txt_resultado.text.isNotEmpty()){ //resultado não estiver vazio
             expressao.text = ""
         }
 
         if(limpar_dados){
-            resultado.text = ""
+            txt_resultado.text = ""
             expressao.append(string) //acrescenta a string
         }
 
         else{
-            expressao.append(resultado.text)
+            expressao.append(txt_resultado.text)
             expressao.append(string)
-            resultado.text = "" //limpa dados
+            txt_resultado.text = "" //limpa dados
         }
 
     }
